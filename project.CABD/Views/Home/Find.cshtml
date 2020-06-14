@@ -1,0 +1,51 @@
+﻿@model project.CABD.Models.CarHistory
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Find</title>
+    <style>
+        a.button {
+            font: bold 20px;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 6px 2px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+
+        #outPopUp {
+            width: 300px;
+            height: 200px;
+            background: white;
+            margin: auto;
+            margin-top: 50px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body style="padding-left:40%;padding-top:12.5%">
+    <p>Cautare stare la o anumita data(dd-mm-yy hh:mm:ss):</p>
+    <div>
+        @using (Html.BeginForm("Show", "Home", FormMethod.Get))
+        {
+            @Html.TextBox("date")<input type="submit" value="Search" />
+
+        }
+        <br />
+        <div>
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+        </div>
+
+    </div>
+</body>
+</html>

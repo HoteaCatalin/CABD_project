@@ -1,0 +1,115 @@
+﻿@model IEnumerable<project.CABD.Models.Car>
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cars main page</title>
+    <style>
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 10%;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        a.button {
+            font: bold 20px;
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 6px 2px 6px;
+            border-top: 1px solid #CCCCCC;
+            border-right: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            border-left: 1px solid #CCCCCC;
+        }
+    </style>
+
+</head>
+<body>
+    <br />
+    <br />
+    <p>
+        @Html.ActionLink("Add car", "Create", null, new { @class = "button" })
+    </p>
+    <div style="overflow-x:auto;">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.An)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pret)
+                </th>
+                <th>
+                        Data creare
+                </th>
+                <th>
+                    Data modificare
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.An)
+                    </td>
+                    <td>
+                        $@Html.DisplayFor(modelItem => item.Pret)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateCreated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateLastModified)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "button" }) 
+                        @Html.ActionLink("History", "ViewHistory", new { id = item.Id }, new { @class = "button" }) 
+                        @Html.ActionLink("Statistics", "Stats", new { id = item.Id }, new { @class = "button" }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "button" }) 
+                        @Html.ActionLink("Find", "Find", new { id = item.Id }, new { @class = "button" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
